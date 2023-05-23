@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Card from '../components/Card'
 import Cardcopy from '../components/Cardcopy'
 import { createClient } from 'contentful'
 
@@ -35,19 +34,19 @@ function workout_programs({ programs }) {
    </div>
    <div className='container grid grid-cols-3 gap-4 content-center align-top py-7'>
     <div className='mx-4 '>
-      <Card></Card>
+        Lorem Ipsum Hebban Alla Vologe
     </div>
     <div className='mx-4 '>
-      <Card></Card>
+        Lorem Ipsum Hebban Alla Vologe
     </div>
     <div className='mx-4 '>
-      <Card></Card>
+        Lorem Ipsum Hebban Alla Vologe
     </div>
    </div>
 
-   <div className='container grid grid-cols-3 gap-4 content-center align-top py-7 mx-6'>
+   <div className='container grid grid-cols-3 gap-4 content-center align-top py-7 mx-20'>
     {programs.map((program)=>
-    <div>
+    <div key={program.id}>
     <Cardcopy cardTitle={program.fields.programName} cardDescription={program.fields.description} programDuration={program.fields.duration} cardImage={program.fields.image.fields.file.url}/>
     </div>
     )}
