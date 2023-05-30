@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -8,7 +9,7 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
-    <div className='sticky max-w-full bg-blue-500 text-white h-24 justify-between items-center flex'>
+    <div className='sticky top-0 max-w-full bg-blue-500 text-white h-24 justify-between items-center flex'>
       <h1 className='px-10 text-2xl'><a href='\'>Sport in Schiedam</a></h1>
       <ul className='flex items-center'>
         <li className='px-4'>
@@ -50,15 +51,15 @@ function Navbar() {
                 </Menu.Item>
                 <Menu.Item>
                 {({ active }) => (
-                <a
-                  href="workout_programs"
+                <Link
+                  href="/workout-programs "
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
                   Workout Programs
-                </a>
+                </Link>
               )}
                 </Menu.Item>
                 <Menu.Item>

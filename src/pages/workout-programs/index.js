@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Cardcopy from '../components/Cardcopy'
+import Navbar from '../../components/Navbar'
+import Cardcopy from '../../components/Cardcopy'
 import { createClient } from 'contentful'
 
 
@@ -23,7 +23,7 @@ export async function getStaticProps() {
   }
 }
 
-function workout_programs({ programs }) {
+function workoutPrograms({ programs }) {
     console.log({programs})
 
   return (
@@ -47,7 +47,11 @@ function workout_programs({ programs }) {
    <div className='container grid grid-cols-3 gap-4 content-center align-top py-7 mx-20'>
     {programs.map((program)=>
     <div key={program.id}>
-    <Cardcopy cardTitle={program.fields.programName} cardDescription={program.fields.description} programDuration={program.fields.duration} cardImage={program.fields.image.fields.file.url}/>
+    <Cardcopy 
+      cardTitle={program.fields.programName} 
+      cardDescription={program.fields.description} 
+      cardSubheader={'Duration: ' + program.fields.duration + ' weeks'} 
+      cardImage={program.fields.image.fields.file.url}/>
     </div>
     )}
     </div>
@@ -56,4 +60,4 @@ function workout_programs({ programs }) {
   )
 }
 
-export default workout_programs
+export default workoutPrograms
