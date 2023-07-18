@@ -83,12 +83,12 @@ function Navbar() {
 </Menu>
         </li>
         
-        <li className='px-16'>Mission</li>
-        <li className='px-16'>About</li>
-        <li className='px-16'>Contact</li>
+        <li className='px-16 invisible lg:visible'>Mission</li>
+        <li className='px-16 invisible lg:visible'>About</li>
+        <li className='px-16 invisible lg:visible'>Contact</li>
 
         <li className='px-4'>
-        <Menu as="div" className="relative inline-block text-left">
+        <Menu as="div" className="inline-block text-left fixed mr-5">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           Options

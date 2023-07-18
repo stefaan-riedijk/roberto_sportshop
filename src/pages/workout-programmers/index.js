@@ -35,11 +35,15 @@ console.log('het huidige gekke padje is: ' + currentPath)
 
   return (
     <>
-    <main>
    <Navbar />
-   <div className='text-3xl container'>
+
+
+    <main className='absolute mx-3'>
+
+   <div className='text-3xl relative w-full'>
+
    </div>
-   <div className='container grid grid-cols-3 gap-4 content-center align-top py-7'>
+   <div className='relative w-full grid grid-cols-3 gap-4 content-center align-top py-7'>
     <div className='mx-4 '>
         Lorem Ipsum Hebban Alla Vologe
     </div>
@@ -51,7 +55,7 @@ console.log('het huidige gekke padje is: ' + currentPath)
     </div>
    </div>
 
-   <div className='container grid grid-cols-3 gap-4 content-center align-top py-7 mx-20'>
+   <div className='grid grid-cols-2 md:grid-cols-3 gap-4 items-stretch justify-items-center mx-4 md:mx-10 relative w-full'>
     {programs.map((program)=>
     {
         return <div key={program.id}>
@@ -60,7 +64,7 @@ console.log('het huidige gekke padje is: ' + currentPath)
             cardTitle={program.fields.programName}
             cardDescription={program.fields.description}
             cardSubheader={'Duration: ' + program.fields.duration + ' weeks'}
-            cardImageUrl={program.fields.image.fields.file.url}
+            cardImageUrl={'https:' + program.fields.image.fields.file.url}
             cardUrl={currentPath + '/' + program.fields.slug} />
           <p>{console.log(program.id)}</p>
         </div>
