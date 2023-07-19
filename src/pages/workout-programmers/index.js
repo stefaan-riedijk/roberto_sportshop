@@ -25,7 +25,9 @@ export async function getStaticProps() {
 }
 
 
-function workoutPrograms({ programs }) {
+
+
+function WorkoutProgrammers({ programs }) {
 
     console.log({programs})
 
@@ -76,4 +78,4 @@ console.log('het huidige gekke padje is: ' + currentPath)
   )
 }
 
-export default workoutPrograms
+export default WorkoutProgrammers

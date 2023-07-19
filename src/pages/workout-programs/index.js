@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../../components/Navbar2'
-import NewCard from '../../components/NewCard'
+import Cardcopy from '../../components/Cardcopy'
 import { createClient } from 'contentful'
 import { useRouter } from 'next/router'
 
@@ -25,11 +25,12 @@ export async function getStaticProps() {
 }
 
 
-function workoutPrograms({ programs }) {
+function WorkoutPrograms({ programs }) {
 
     console.log({programs})
-
+    
     const router = useRouter()
+    
 const currentPath = router.route
 console.log('het huidige gekke padje is: ' + currentPath)
 
@@ -55,7 +56,7 @@ console.log('het huidige gekke padje is: ' + currentPath)
     {programs.map((program)=>
     {
         return <div key={program.id}>
-          <NewCard
+          <Cardcopy
 
             cardTitle={program.fields.programName}
             cardDescription={program.fields.description}
@@ -72,4 +73,4 @@ console.log('het huidige gekke padje is: ' + currentPath)
   )
 }
 
-export default workoutPrograms
+export default WorkoutPrograms
