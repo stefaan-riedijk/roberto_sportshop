@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function NewCard( props ) {
   return (
-<div class="max-w-sm h-full bg-stone-500 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative top-0">
+<div class="max-w-sm h-full bg-sky-500 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative top-0">
 
     <div className='w-auto h-32 md:h-40 lg:h-44 relative flex-1'>
     <a href={props.cardUrl}>
