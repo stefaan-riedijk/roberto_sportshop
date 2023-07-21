@@ -5,9 +5,9 @@ import { InlineWidget } from 'react-calendly'
 
 function bookACall() {
   return (
-    <>
+    <main>
     < Navbar />
-    <div>
+    <div className='m-auto container'>
 
     <div className="max-h-26 text-center items-center mt-9 my-6">
         <p className="text-2xl mb-5">Gesprek boeken</p>
@@ -18,8 +18,8 @@ function bookACall() {
         </div>
         </div>
 
-    <div className="w-full container max-h-80 mx-24 align-middle">
-    <div className="items-center inline-flex align-middle max-w-md">
+    <div className="container max-h-80 align-middle mt-20">
+    <div className="max-w-xl m-auto">
     < InlineWidget 
     url="https://calendly.com/stephen-reidijck"
     />
@@ -27,7 +27,7 @@ function bookACall() {
     </div>
 
     </div>
-    </>
+    </main>
   )
 }
 
