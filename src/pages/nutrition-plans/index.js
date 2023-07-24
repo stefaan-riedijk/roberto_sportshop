@@ -5,15 +5,15 @@ import { createClient } from 'contentful'
 import { useRouter } from 'next/router'
 
 
+const contentful = require('contentful')
 
-export async function getStaticProps() {
+const client = createClient({
+  space: process.env.DB_SPACE_ID,
+  accessToken: process.env.DB_ACCESS_TOKEN,
+})
 
-  const contentful = require('contentful')
+export async function getServerSideProps() {
 
-  const client = createClient({
-    space: process.env.DB_SPACE_ID,
-    accessToken: process.env.DB_ACCESS_TOKEN,
-  })
 
   const res = await client.getEntries({ content_type: 'nutritionPlan' })
 
