@@ -61,7 +61,7 @@ export default function ProgramPage( props ) {
                   <div className=' mt-5 mx-5 py-3 justify-center text-center'>
                       <h1 className='text-3xl text font-medium'>{plan.planTitle}</h1>
                       <h1 className='text-2xl font-normal'>{plan.description}</h1>
-                      <h1 className='text-xl font-normal'>{'Duration: ' + plan.targetAudience + ' weeks'}</h1>
+                      <h1 className='text-xl font-normal'>{'Doelgroep: ' + plan.targetAudience}</h1>
                   </div>
                   <div className=' mt-8 border-4 border-sky-700 bg-teal-300 mx-auto rounded-lg max-w-2xl divide-y-2 py-3 divide-sky-700 text-center'>
                       {plan.foodItems.map((foodItem) => 
