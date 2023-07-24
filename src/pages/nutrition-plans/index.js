@@ -12,7 +12,7 @@ const client = createClient({
   accessToken: process.env.DB_ACCESS_TOKEN,
 })
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
 
   const res = await client.getEntries({ content_type: 'nutritionPlan' })

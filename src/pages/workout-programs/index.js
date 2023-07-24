@@ -8,7 +8,7 @@ import NewCard from '../../components/NewCard'
 
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const contentful = require('contentful')
 

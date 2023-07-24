@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 
 
-export async function getServerSideProps( context ) {
+export async function getStaticProps( context ) {
   
 
         const contentful = require('contentful')
@@ -18,7 +18,7 @@ export async function getServerSideProps( context ) {
               space: process.env.DB_SPACE_ID,
               accessToken: process.env.DB_ACCESS_TOKEN ,
         });
-        
+
     	console.log ('context: ', context.params)
       
       // get data from a headless CMS

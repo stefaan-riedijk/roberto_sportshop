@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 
 
-export async function getServerSideProps( context ) {
+export async function getStaticProps( context ) {
   
       const contentful = require('contentful')
       const client = contentful.createClient({
@@ -17,7 +17,7 @@ export async function getServerSideProps( context ) {
       });
       console.log ('context: ', context.params)
 
-      
+
       // get data from a headless CMS
       const res = await client.getEntries ({
         content_type: 'nutritionPlan',
