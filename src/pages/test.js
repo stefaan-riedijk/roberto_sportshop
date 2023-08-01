@@ -1,17 +1,41 @@
 import React from 'react'
-import Navbar from '../components/Navbar2'
+import Navbar from '../components/Navbar3'
 
-function test() {
+import {client} from '../lib/client'
+import {RICHTEXT_OPTIONS} from '../lib/richtextOptions'
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
+
+
+
+export async function getStaticProps() {
+
+  const res = await client.getEntries({content_type:'homePage'})
+
+  return {
+    props : {
+      homepage: res.items[0].fields
+    }
+  }
+}
+
+
+function Test( props) {
+  console.log(JSON.stringify(props.homepage, null, 4))
   return (
     <>
     <Navbar>
 
     </Navbar>
     <main>
-        <div className='container bg-red-500 text-center mx-10 my-10 h-1/3'>Paco</div>
+      <div className='max-w-2xl m-auto'>
+         {documentToReactComponents(props.homepage.firstParagraph, RICHTEXT_OPTIONS)}
+      </div>
+      <div className='max-w-2xl m-auto'>
+        {documentToReactComponents(props.homepage.welcomeText, RICHTEXT_OPTIONS)}
+      </div>
     </main>
     </>
   )
 }
 
-export default test
+export default Test

@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+
     body {
         @apply bg-blue-300;
     }
+    main {
+        @apply mx-10 mt-8;
+    }
     
-.cropped-ofp {
-    width: 150px; 
-    height: 150px; 
-    object-fit: cover;
-    object-position: 25% 25%; 
+    .cropped-ofp {
+        width: 150px; 
+        height: 150px; 
+        object-fit: cover;
+        object-position: 25% 25%; 
     }
 }

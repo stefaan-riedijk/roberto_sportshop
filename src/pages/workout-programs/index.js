@@ -3,7 +3,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { createClient } from 'contentful'
 
-import Navbar from '../../components/Navbar2'
+import Navbar from '../../components/Navbar3'
 import NewCard from '../../components/NewCard'
 
 
@@ -40,8 +40,9 @@ function WorkoutProgrammers({ programs }) {
 
     return (
       
-      <main>
+      <>
         <Navbar />
+        <main>
 
         <div className='absolute mx-3'>
 
@@ -75,8 +76,9 @@ function WorkoutProgrammers({ programs }) {
             </div>
         </div>
 
+        </main>
 
-    </main>
+    </>
     )
 }
 

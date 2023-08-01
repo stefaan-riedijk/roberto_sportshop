@@ -1,23 +1,53 @@
+import { createClient } from 'contentful'
+
 import { Inter } from 'next/font/google'
+
+
 import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Navbar from '../components/Navbar2.js'
+import Navbar from '../components/Navbar3.js'
 
+import ReactMarkdown from 'react-markdown'
 import workoutphoto from '../assets/images/workout.jpg'
 import nutphoto from '../assets/images/nutrition.jpg'
+
+
+
+const contentful = require('contentful')
+const client = createClient({
+  space: process.env.DB_SPACE_ID as string,
+  accessToken: process.env.DB_ACCESS_TOKEN as string,
+})
+
+export async function getStaticProps() {
+
+  const res = await client.getEntries({content_type:'homePage'})
+
+  return {
+    props : {
+      homepage: res.items[0].fields
+    }
+  }
+}
 
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 
-export default function Home( ) {
+
+
+
+
+export default function Home( props:Object ) {
+
+  console.log('het hele apparaat: ' + JSON.stringify(props,null,4))
 
   return (
     
-    <main>
+    <>
         <Navbar />
         <div className='max-w-4xl mx-auto px-5 text-center py-20 text-blue-700'>
 
@@ -50,7 +80,10 @@ export default function Home( ) {
                       />
                 </Link>
           </div>
+          <ReactMarkdown>
+                  {props.homepage.firstParagraph.content[0].content[0].value}
+          </ReactMarkdown>
         </div>
-    </main>
+    </>
   )
 }
