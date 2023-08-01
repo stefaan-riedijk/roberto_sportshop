@@ -41,7 +41,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 
-export default function Home( props:Object ) {
+export default function Home( props:any){
 
   console.log('het hele apparaat: ' + JSON.stringify(props,null,4))
 
