@@ -5,12 +5,15 @@
 @layer base {
 
     body {
-        @apply bg-blue-300;
+        @apply bg-soccer-background;
     }
     main {
         @apply mx-10 mt-8;
     }
-    
+    .main-header  {
+        @apply m-auto text-5xl text-center mt-10 font-semibold;
+    }
+
     .cropped-ofp {
         width: 150px; 
         height: 150px; 

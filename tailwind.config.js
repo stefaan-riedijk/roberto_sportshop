@@ -5,10 +5,15 @@ module.exports = {
     "node_modules/flowbite-react/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'soccer-background': "url('~/src/assets/images/soccer-background.jpg')",
+      }
+    },
   },
   plugins: [
-    require("flowbite/plugin")
+    require("flowbite/plugin"),
+    require('flowbite-typography')
   ],
 }
 

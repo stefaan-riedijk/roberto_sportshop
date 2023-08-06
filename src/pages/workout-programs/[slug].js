@@ -1,7 +1,7 @@
 import React from 'react'
-import { createClient } from 'contentful'
+import {client} from '../../lib/client'
 
-import Navbar from '../../components/Navbar2'
+import Navbar from '../../components/Navbar3'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,25 +10,16 @@ import Link from 'next/link'
 
 
 export async function getServerSideProps( context ) {
-  
 
-        const contentful = require('contentful')
-        const client = contentful.createClient({
-        
-              space: process.env.DB_SPACE_ID,
-              accessToken: process.env.DB_ACCESS_TOKEN ,
-        });
 
-    	console.log ('context: ', context.params)
-      
-      // get data from a headless CMS
+      console.log(context)
+
       const res = await client.getEntries ({
         content_type: 'workoutProgram',
         limit: 1,
         "fields.slug": context.params.slug
       })
 
-      console.log ('de programmas zijn: ', res)
 
       return {
         props: {
@@ -45,19 +36,10 @@ export default function ProgramPage( props ) {
 
       const program = props.program[0].fields
       
-      //const str = JSON.stringify(program, null, 4)
-      //console.log('Nieuwe objectg uit por = ' + str)
-      //const str = JSON.stringify(props.program[0], null, 4)
-      //console.log('Naam van de nieuwe nieuwe programma is' + str)
-      //const naam_str =JSON.stringify(program, null, 4)
-      //console.log('Nieuwe ultranieuwe namm is gelijk aan: ' + naam_str)
-
-      
       return ( 
-      
+        <>
+        <Navbar />
         <main>
-
-          <Navbar />
           <div className='container w-screen px-6 mx-auto lg:max-w-2xl'>
                 <div className='mt-8 lg:mt-16 mx-6 md:mx-auto relative h-36 lg:h-52 justify-center max-w-lg lg:max-w-2xl'>
                         <Image 
@@ -90,5 +72,6 @@ export default function ProgramPage( props ) {
           </div>
 
         </main>
+        </>
       )
     }

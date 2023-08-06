@@ -8,9 +8,7 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 
 
 export async function getStaticProps() {
-
   const res = await client.getEntries({content_type:'homePage'})
-
   return {
     props : {
       homepage: res.items[0].fields
