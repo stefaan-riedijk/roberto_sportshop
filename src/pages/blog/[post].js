@@ -46,7 +46,7 @@ export default function Post(props) {
         <div className='m-auto mt-5'>
               <Image
                 className='m-auto'
-                src={post.headerImage.fields.file.url}
+                src={`https:${post.headerImage.fields.file.url}`}
                 width={500}
                 height={500}
                 alt=""
