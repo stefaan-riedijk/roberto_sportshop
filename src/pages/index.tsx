@@ -8,8 +8,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Navbar from '../components/Navbar3.js'
+import Carousel from '../components/CarouselReact.js'
 
-import ReactMarkdown from 'react-markdown'
 import workoutphoto from '../assets/images/workout.jpg'
 import nutphoto from '../assets/images/nutrition.jpg'
 
@@ -80,9 +80,7 @@ export default function Home( props:any){
                       />
                 </Link>
           </div>
-          <ReactMarkdown>
-                  {props.homepage.firstParagraph.content[0].content[0].value}
-          </ReactMarkdown>
+          <Carousel/>
         </div>
     </>
   )

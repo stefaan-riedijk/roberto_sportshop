@@ -39,7 +39,7 @@ export default function Post(props) {
         <BlogHeader 
           blogTitle={post.postTitle}
           authorName={author.authorName}
-          authorImage={author.authorPhoto.fields.file.url}
+          authorImage={`https:${author.authorPhoto.fields.file.url}`}
           authorTitle={author.authorTitle}
           publishDate={post.publishedAt}
           />

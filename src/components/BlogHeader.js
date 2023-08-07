@@ -12,8 +12,9 @@ function BlogHeader(props) {
                             <Image 
                                 className="rounded-full object-cover" 
                                 fill={true}
-                                src={`https:${props.authorImage}`} 
+                                src={props.authorImage} 
                                 alt={props.authorName}
+                                priority={true}
                                 />
                         </div>
                       <div>
