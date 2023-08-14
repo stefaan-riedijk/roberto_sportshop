@@ -1,20 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    './public/**/*.html',
-    "node_modules/flowbite-react/**/*.js"
+    "./public/**/*.html",
+    "node_modules/flowbite-react/**/*.js",
   ],
   theme: {
     extend: {
       backgroundImage: {
-        'soccer-background': "url('~/src/assets/images/soccer-background.jpg')",
-      }
+        "soccer-background": "url('~/src/assets/images/soccer-background.jpg')",
+      },
     },
   },
-  plugins: [
-    require("flowbite/plugin"),
-    require('flowbite-typography')
-  ],
-}
-
+  plugins: [require("flowbite/plugin"), require("flowbite-typography")],
+});

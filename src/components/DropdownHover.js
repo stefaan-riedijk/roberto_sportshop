@@ -1,25 +1,27 @@
-import React, {Fragment, useState} from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import Link from 'next/link'
-
+import React, { Fragment, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
-  
-  
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function DropdownHover() {
-
-  const [isShowing, setIsShowing] = useState(false)
+  const [isShowing, setIsShowing] = useState(false);
 
   return (
-    <Menu as="div" className="inline-block relative mr-5">
-      <div onMouseEnter={() => setIsShowing(true)} onMouseLeave={() => setIsShowing(false)}>
+    <Menu as="div" className="relative mr-5 inline-block">
+      <div
+        onMouseEnter={() => setIsShowing(true)}
+        onMouseLeave={() => setIsShowing(false)}
+      >
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           Settings
-          <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+          <ChevronDownIcon
+            className="-mr-1 h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
         </Menu.Button>
       </div>
 
@@ -32,8 +34,8 @@ export default function DropdownHover() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
         show={isShowing}
-        onMouseEnter={()=>setIsShowing(true)}
-        onMouseLeave={()=>setIsShowing(false)}
+        onMouseEnter={() => setIsShowing(true)}
+        onMouseLeave={() => setIsShowing(false)}
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
@@ -42,8 +44,8 @@ export default function DropdownHover() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm",
                   )}
                 >
                   Account settings
@@ -55,8 +57,8 @@ export default function DropdownHover() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm",
                   )}
                 >
                   Support
@@ -68,8 +70,8 @@ export default function DropdownHover() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                    "block px-4 py-2 text-sm",
                   )}
                 >
                   License
@@ -82,8 +84,8 @@ export default function DropdownHover() {
                   <button
                     type="submit"
                     className={classNames(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'block w-full px-4 py-2 text-left text-sm'
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block w-full px-4 py-2 text-left text-sm",
                     )}
                   >
                     Sign out
@@ -95,5 +97,5 @@ export default function DropdownHover() {
         </Menu.Items>
       </Transition>
     </Menu>
-  )
+  );
 }

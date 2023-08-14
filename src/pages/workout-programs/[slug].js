@@ -1,77 +1,66 @@
-import React from 'react'
-import {client} from '../../lib/client'
+import React from "react";
+import { client } from "../../lib/client";
 
-import Navbar from '../../components/Navbar3'
-import Image from 'next/image'
-import Link from 'next/link'
+import Navbar from "../../components/Navbar3";
+import Image from "next/image";
+import Link from "next/link";
 
+export async function getServerSideProps(context) {
+  console.log(context);
 
+  const res = await client.getEntries({
+    content_type: "workoutProgram",
+    limit: 1,
+    "fields.slug": context.params.slug,
+  });
 
-
-
-export async function getServerSideProps( context ) {
-
-
-      console.log(context)
-
-      const res = await client.getEntries ({
-        content_type: 'workoutProgram',
-        limit: 1,
-        "fields.slug": context.params.slug
-      })
-
-
-      return {
-        props: {
-          program: res.items
-        },
-      }
+  return {
+    props: {
+      program: res.items,
+    },
+  };
 }
 
+export default function ProgramPage(props) {
+  const program = props.program[0].fields;
 
-
-export default function ProgramPage( props ) {
-
-
-
-      const program = props.program[0].fields
-      
-      return ( 
-        <>
-        <Navbar />
-        <main>
-          <div className='container w-screen px-6 mx-auto lg:max-w-2xl'>
-                <div className='mt-8 lg:mt-16 mx-6 md:mx-auto relative h-36 lg:h-52 justify-center max-w-lg lg:max-w-2xl'>
-                        <Image 
-                        className='rounded-lg shadow-lg object-cover'
-                        src={'https:' + program.image.fields.file.url}
-                        fill={true}
-                        alt="Workout Program Image"
-                        />
-                </div>
-                <div className=' mt-5 mx-5 py-3 justify-center text-center'>
-                      <h1 className='text-3xl text font-medium'>{program.programName}</h1>
-                      <h1 className='text-2xl font-normal'>{program.description}</h1>
-                      <h1 className='text-xl font-normal'>{'Duration: ' + program.duration + ' weeks'}</h1>
-                </div>
-                <div className=' mt-8 border-4 border-sky-700 mx-auto rounded-lg max-w-2xl divide-y-2 py-3 divide-sky-700 text-center'>
-                        {program.exercises.content.map((exercise) => 
-                        { 
-                          return <div key={exercise.id}>
-                                  {exercise.content[0].value}
-                          </div>
-                        }
-                        )}
-                </div>
-                <div className='mt-8'>
-                        <Link href='/book-a-call'>
-                            <button type="button" class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Get more info</button>
-                        </Link>
-                </div>
+  return (
+    <>
+      <Navbar />
+      <main>
+        <div className="container mx-auto w-screen px-6 lg:max-w-2xl">
+          <div className="relative mx-6 mt-8 h-36 max-w-lg justify-center md:mx-auto lg:mt-16 lg:h-52 lg:max-w-2xl">
+            <Image
+              className="rounded-lg object-cover shadow-lg"
+              src={"https:" + program.image.fields.file.url}
+              fill={true}
+              alt="Workout Program Image"
+            />
           </div>
-
-        </main>
-        </>
-      )
-    }
+          <div className=" mx-5 mt-5 justify-center py-3 text-center">
+            <h1 className="text text-3xl font-medium">{program.programName}</h1>
+            <h1 className="text-2xl font-normal">{program.description}</h1>
+            <h1 className="text-xl font-normal">
+              {"Duration: " + program.duration + " weeks"}
+            </h1>
+          </div>
+          <div className=" mx-auto mt-8 max-w-2xl divide-y-2 divide-sky-700 rounded-lg border-4 border-sky-700 py-3 text-center">
+            {program.exercises.content.map((exercise) => {
+              return <div key={exercise.id}>{exercise.content[0].value}</div>;
+            })}
+          </div>
+          <div className="mt-8">
+            <Link href="/book-a-call">
+              <button
+                type="button"
+                class="rounded-lg bg-blue-700 px-6 py-3.5 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Get more info
+              </button>
+            </Link>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function cardGrid( props ) {
+export function CardGrid(props) {
   return (
-      <div className="grid grid-cols-3 lg:grid-cols-5 max-h-32">
-          {props.children}
-      </div>
-  )
+    <div className="container mx-auto my-10 grid h-full grid-cols-2 grid-rows-3 space-x-3 space-y-4 rounded-xl border-2 px-4 py-4 lg:grid-cols-3">
+      {props.children}
+    </div>
+  );
 }
 
-export default cardGrid
+export default CardGrid;
