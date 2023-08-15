@@ -7,7 +7,7 @@ import DropdownHover from "./DropdownHoverProps";
 import NavbarHamburger from "./HamburgerNavbar2";
 import Button from "./Button";
 
-import logoPic from "@/assets/images/logoPic.jpg";
+import logoPic from "@/assets/images/R-ForceLogo.jpg";
 
 const servicesDropdownPaths = {
   title: "Services",
