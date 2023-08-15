@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar3";
 
-import { client } from "../lib/contentful/client";
+import { contentfulClient } from "../lib/contentful/client";
 import { RICHTEXT_OPTIONS } from "../lib/contentful/richtextOptions";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export async function getStaticProps() {
-  const res = await client.getEntries({ content_type: "homePage" });
+  const res = await contentfulClient.getEntries({ content_type: "homePage" });
   return {
     props: {
       homepage: res.items[0].fields,

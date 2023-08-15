@@ -1,5 +1,5 @@
 import React from "react";
-import { client } from "../../lib/contentful/client";
+import { contentfulClient } from "../../lib/contentful/client";
 
 import Navbar from "../../components/Navbar3";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Link from "next/link";
 export async function getServerSideProps(context) {
   console.log(context);
 
-  const res = await client.getEntries({
+  const res = await contentfulClient.getEntries({
     content_type: "workoutProgram",
     limit: 1,
     "fields.slug": context.params.slug,
