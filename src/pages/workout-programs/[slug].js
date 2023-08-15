@@ -1,5 +1,5 @@
 import React from "react";
-import { client } from "../../lib/client";
+import { client } from "../../lib/contentful/client";
 
 import Navbar from "../../components/Navbar3";
 import Image from "next/image";
@@ -44,7 +44,7 @@ export default function ProgramPage(props) {
               {"Duration: " + program.duration + " weeks"}
             </h1>
           </div>
-          <div className=" mx-auto mt-8 max-w-2xl divide-y-2 divide-sky-700 rounded-lg border-4 border-sky-700 py-3 text-center">
+          <div className=" divide-sky-700 border-sky-700 mx-auto mt-8 max-w-2xl divide-y-2 rounded-lg border-4 py-3 text-center">
             {program.exercises.content.map((exercise) => {
               return <div key={exercise.id}>{exercise.content[0].value}</div>;
             })}
@@ -53,7 +53,7 @@ export default function ProgramPage(props) {
             <Link href="/book-a-call">
               <button
                 type="button"
-                class="rounded-lg bg-blue-700 px-6 py-3.5 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="rounded-lg bg-blue-700 px-6 py-3.5 text-center text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Get more info
               </button>

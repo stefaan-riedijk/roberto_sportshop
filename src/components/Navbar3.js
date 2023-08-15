@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // import DropdownNormal from './DropdownNormal'
 import DropdownHover from "./DropdownHoverProps";
 import NavbarHamburger from "./HamburgerNavbar2";
 import Button from "./Button";
+
+import logoPic from "@/assets/images/logoPic.jpg";
 
 const servicesDropdownPaths = {
   title: "Services",
@@ -39,8 +42,10 @@ const CTAButtonPaths = {
 function Navbar() {
   return (
     <div className="sticky top-0 z-10 flex h-24 w-full items-center justify-normal bg-blue-500 text-white opacity-90">
-      <h1 className="mr-16 max-w-lg px-10 text-2xl">
-        <a href="\">Sport in Schiedam</a>
+      <h1 className="relative my-3 ml-4 mr-16 h-full max-w-lg px-10 text-2xl">
+        <a href="\">
+          <Image src={logoPic} alt="" fill={true} className="object-contain" />
+        </a>
       </h1>
       <div className="mx-5 flex w-full">
         <ul className="w-2xl m-auto hidden items-center space-x-14 px-4 lg:flex">

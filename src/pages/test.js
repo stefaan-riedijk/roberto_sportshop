@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar3";
 
-import { client } from "../lib/client";
-import { RICHTEXT_OPTIONS } from "../lib/richtextOptions";
+import { client } from "../lib/contentful/client";
+import { RICHTEXT_OPTIONS } from "../lib/contentful/richtextOptions";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export async function getStaticProps() {

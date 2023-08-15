@@ -12,12 +12,12 @@ export default function DropdownHover(props) {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
-    <Menu as="div" className="relative mr-5 inline-block">
+    <Menu as="div" className="relative mr-5 inline-block h-full w-full">
       <div
         onMouseEnter={() => setIsShowing(true)}
         onMouseLeave={() => setIsShowing(false)}
       >
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md  bg-indigo-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-blue-200 hover:bg-gray-50">
           {props.menuTitle}
           <ChevronDownIcon
             className="text-white-400 -mr-1 h-5 w-5"
