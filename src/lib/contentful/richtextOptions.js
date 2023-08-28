@@ -5,7 +5,7 @@ export const RICHTEXT_OPTIONS = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => {
       return (
-        <p className="mb-3 text-center  indent-16 text-black dark:text-gray-400">
+        <p className="mx-auto mb-3 max-w-3xl text-center indent-16 text-black dark:text-gray-400">
           {children}
         </p>
       );

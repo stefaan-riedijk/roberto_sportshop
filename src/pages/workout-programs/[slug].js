@@ -16,13 +16,13 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      program: res.items,
+      data: res.items,
     },
   };
 }
 
 export default function ProgramPage(props) {
-  const program = props.program[0].fields;
+  const program = props.data[0].fields;
 
   return (
     <>

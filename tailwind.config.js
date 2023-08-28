@@ -5,7 +5,7 @@ module.exports = withMT({
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./public/**/*.html",
-    "node_modules/flowbite-react/**/*.js",
+    "./node_modules/flowbite**/*.js",
   ],
   theme: {
     extend: {

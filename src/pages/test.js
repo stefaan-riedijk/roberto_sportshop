@@ -1,39 +1,44 @@
-import React from "react";
-import Navbar from "../components/Navbar3";
+import React, { useState, useEffect } from "react";
+import fetchPrograms from "../lib/contentful/fetchPrograms";
+import { CategoryFilter } from "../components/CategoryFilter";
+import Card from "../components/NewCard";
+import CardGrid from "../components/CardGrid";
 
-import { contentfulClient } from "../lib/contentful/client";
-import { RICHTEXT_OPTIONS } from "../lib/contentful/richtextOptions";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+function Test() {
+  const [programs, setPrograms] = useState([]);
+  const [singleTag, setSingleTag] = useState(true);
+  const [tags, setTags] = useState([""]);
+  const { fetchProgramsByTag } = fetchPrograms();
 
-export async function getStaticProps() {
-  const res = await contentfulClient.getEntries({ content_type: "homePage" });
-  return {
-    props: {
-      homepage: res.items[0].fields,
-    },
-  };
-}
+  useEffect(() => {
+    fetchProgramsByTag(tags).then(
+      (response) => response && setPrograms(response),
+    );
+  });
 
-function Test(props) {
-  console.log(JSON.stringify(props.homepage, null, 4));
+  console.log(programs);
+  console.log(tags);
   return (
-    <>
-      <Navbar></Navbar>
-      <main>
-        <div className="m-auto max-w-2xl">
-          {documentToReactComponents(
-            props.homepage.firstParagraph,
-            RICHTEXT_OPTIONS,
-          )}
-        </div>
-        <div className="m-auto max-w-2xl">
-          {documentToReactComponents(
-            props.homepage.welcomeText,
-            RICHTEXT_OPTIONS,
-          )}
-        </div>
-      </main>
-    </>
+    <div>
+      <div className="m-auto max-w-xl pb-6">
+        <CategoryFilter stateChanger={setTags}></CategoryFilter>
+      </div>
+      <div>
+        <CardGrid>
+          {programs.map((program) => {
+            return (
+              <Card
+                cardTitle={program.programName}
+                cardDescription={program.description}
+                cardSubheader={"Duration: " + program.duration + " weeks"}
+                cardImageUrl={"https:" + program.image.fields.file.url}
+                cardUrl={`/workout-programs/${program.slug}`}
+              />
+            );
+          })}
+        </CardGrid>
+      </div>
+    </div>
   );
 }
 

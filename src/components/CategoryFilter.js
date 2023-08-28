@@ -4,7 +4,7 @@
 //   Plugins:
 //     - @tailwindcss/forms
 // -->
-export function CategoryFilter() {
+export function CategoryFilter({ stateChanger }, state) {
   return (
     <div class="space-y-2">
       <details class="overflow-hidden rounded border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
@@ -48,8 +48,17 @@ export function CategoryFilter() {
                   type="checkbox"
                   id="FilterInStock"
                   class="h-5 w-5 rounded border-gray-300"
+                  onChange={(e) =>
+                    e.target.checked
+                      ? stateChanger((prevState) => [
+                          ...prevState,
+                          "courseFormatOnline",
+                        ])
+                      : stateChanger((prevState) =>
+                          prevState.filter((i) => i !== "courseFormatOnline"),
+                        )
+                  }
                 />
-
                 <span class="text-sm font-medium text-gray-700">
                   In Stock (5+)
                 </span>
@@ -65,6 +74,18 @@ export function CategoryFilter() {
                   type="checkbox"
                   id="FilterPreOrder"
                   class="h-5 w-5 rounded border-gray-300"
+                  onChange={(e) =>
+                    e.target.checked
+                      ? stateChanger((prevState) => [
+                          ...prevState,
+                          "courseFormatOpLocatie",
+                        ])
+                      : stateChanger((prevState) =>
+                          prevState.filter(
+                            (i) => i !== "courseFormatOpLocatie",
+                          ),
+                        )
+                  }
                 />
 
                 <span class="text-sm font-medium text-gray-700">

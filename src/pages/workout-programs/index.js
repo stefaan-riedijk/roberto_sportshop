@@ -1,6 +1,7 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { contentfulClient } from "../../lib/contentful/client";
+import React, { useState, useEffect } from "react";
+// import { useRouter } from "next/router";
+import { createClient } from "contentful";
+// import { contentfulClient } from "../../lib/contentful/client";
 import { CategoryFilter } from "../../components/CategoryFilter";
 import { CardGrid } from "../../components/CardGrid";
 
@@ -8,6 +9,10 @@ import Navbar from "../../components/Navbar3";
 import NewCard from "../../components/NewCard";
 
 export async function getStaticProps() {
+  const contentfulClient = createClient({
+    space: process.env.DB_SPACE_ID,
+    accessToken: process.env.DB_ACCESS_TOKEN,
+  });
   const res = await contentfulClient.getEntries({
     content_type: "workoutProgram",
   });
@@ -19,20 +24,45 @@ export async function getStaticProps() {
 }
 
 function WorkoutProgrammers({ programs }) {
-  //console.log({programs})
-  const router = useRouter();
-  const currentPath = router.route;
-  //console.log('het huidige gekke padje is: ' + currentPath)
+  // console.log(programs);
+
+  var filteredPrograms = programs;
+  const [teachingMethod, setTeachingMethod] = useState(true);
+  useEffect(() => {
+    console.log(teachingMethod);
+    const getFilteredPrograms = async () => {
+      const contentfulClient = createClient({
+        space: process.env.DB_SPACE_ID,
+        accessToken: process.env.DB_ACCESS_TOKEN,
+      });
+      filteredPrograms = await contentfulClient.getEntries({
+        content_type: "workoutProgram",
+        "metadata.tags.sys.id[all]": ["courseFormatOnline"],
+      });
+      return {
+        filteredPrograms,
+      };
+    };
+    // const filteredPrograms = getFilteredPrograms();
+  }, [teachingMethod]);
+
+  console.log("de prgms zijn" + filteredPrograms);
+  // const router = useRouter();
+  // const currentPath = router.route;
 
   return (
     <>
       <Navbar />
       <main className="h-full">
         <div className="m-auto max-w-xl pb-6">
-          <CategoryFilter></CategoryFilter>
+          <CategoryFilter
+            stateChanger={setTeachingMethod}
+            state={teachingMethod}
+          ></CategoryFilter>
         </div>
+        {teachingMethod === true && <div>jatoch</div>}
         <CardGrid>
-          {programs.map((program) => {
+          {filteredPrograms.map((program) => {
             return (
               <div key={program.id}>
                 <NewCard
@@ -42,7 +72,7 @@ function WorkoutProgrammers({ programs }) {
                     "Duration: " + program.fields.duration + " weeks"
                   }
                   cardImageUrl={"https:" + program.fields.image.fields.file.url}
-                  cardUrl={currentPath + "/" + program.fields.slug}
+                  cardUrl={`/workout-programs/${program.fields.slug}`}
                 />
                 <p>{console.log(program.id)}</p>
               </div>
@@ -55,3 +85,18 @@ function WorkoutProgrammers({ programs }) {
 }
 
 export default WorkoutProgrammers;
+
+// function filterPrograms(programs) {
+//   const filteredPrograms = programs.filter((program) => {
+//     program.metadata.tags.includes({ sys: { id: "courseFormatOnline" } });
+//   });
+//   return filteredPrograms;
+// }
+
+// async function filterProgramsSDK(tags) {
+//   const res = await contentfulClient.getEntries({
+//     content_type: "workoutProgram",
+//     "metadata.tags.sys.id[in]": { tags },
+//   });
+//   return res.items;
+// }
