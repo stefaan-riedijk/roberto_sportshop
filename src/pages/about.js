@@ -5,6 +5,7 @@ import TeamSection from "../components/TeamSection";
 import { getAboutPage } from "../lib/contentful/getAboutPage";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { RICHTEXT_OPTIONS } from "../lib/contentful/richtextOptions";
+import ScrollToTopButton from "../components/BackToTopButton.js";
 
 export const getStaticProps = async () => {
   const res = await getAboutPage();
@@ -67,6 +68,7 @@ function About(data) {
       </div>
       <div ref={teamSection}>
         <TeamSection members={content.team}></TeamSection>
+        <ScrollToTopButton />
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
+import ScrollToTopButton from "../components/BackToTopButton";
 
 import styles from "@/styles/Home.module.css";
 
@@ -28,6 +29,7 @@ export default function Home(props: any) {
   return (
     <>
       <Navbar />
+      <ScrollToTopButton />
       <div className="container relative mx-auto h-full w-full px-4 py-10">
         <CarouselWithContent></CarouselWithContent>
       </div>

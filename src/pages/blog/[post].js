@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Navbar from "../../components/Navbar3";
 import BlogHeader from "../../components/BlogHeader";
 import Image from "next/image";
+import BackToTopButton from "../../components/BackToTopButton";
 
 export async function getServerSideProps(context) {
   const response = await contentfulClient.getEntries({
@@ -50,6 +51,7 @@ export default function Post(props) {
           <div className="">
             {documentToReactComponents(post.mainText, RICHTEXT_OPTIONS)}
           </div>
+          <BackToTopButton />
         </div>
       </main>
     </>

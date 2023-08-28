@@ -9,7 +9,6 @@ function Test() {
   const [singleTag, setSingleTag] = useState(true);
   const [tags, setTags] = useState([""]);
   const { fetchProgramsByTag } = fetchPrograms();
-
   useEffect(() => {
     fetchProgramsByTag(tags).then(
       (response) => response && setPrograms(response),
@@ -28,6 +27,7 @@ function Test() {
           {programs.map((program) => {
             return (
               <Card
+                key={program.id}
                 cardTitle={program.programName}
                 cardDescription={program.description}
                 cardSubheader={"Duration: " + program.duration + " weeks"}
