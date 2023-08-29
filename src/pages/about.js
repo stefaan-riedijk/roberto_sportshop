@@ -6,6 +6,7 @@ import { getAboutPage } from "../lib/contentful/getAboutPage";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { RICHTEXT_OPTIONS } from "../lib/contentful/richtextOptions";
 import ScrollToTopButton from "../components/BackToTopButton.js";
+import ScrollSpy from "../components/ScrollSpy";
 
 export const getStaticProps = async () => {
   const res = await getAboutPage();
@@ -21,57 +22,66 @@ function About(data) {
   const missionSection = useRef(null);
   const teamSection = useRef(null);
   const philosophySection = useRef(null);
-  const ScrollToSection = (elementRef) => {
-    window.scrollTo({
-      top: elementRef.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
+
   return (
     <>
       <Navbar />
-      <div className="mx-auto my-5 flex w-32 space-x-11">
-        <button
-          onClick={() => {
-            ScrollToSection(missionSection);
-          }}
-        >
-          Mission
-        </button>
-        <button
-          onClick={() => {
-            ScrollToSection(philosophy);
-          }}
-        >
-          Philosophy
-        </button>
-        <button
-          onClick={() => {
-            ScrollToSection(teamSection);
-          }}
-        >
-          Team
-        </button>
-      </div>
-      <section>
-        <div>
-          {documentToReactComponents(
-            content.aboutContent.philosophySection,
-            RICHTEXT_OPTIONS,
-          )}
+      <div className="container mx-auto grid max-w-6xl grid-cols-3">
+        <div className="col-span-2">
+          <div className="mx-auto my-5 flex w-32 space-x-11">
+            <button
+              onClick={() => {
+                ScrollToSection(missionSection);
+              }}
+            >
+              Mission
+            </button>
+            <button
+              onClick={() => {
+                ScrollToSection(philosophy);
+              }}
+            >
+              Philosophy
+            </button>
+            <button
+              onClick={() => {
+                ScrollToSection(teamSection);
+              }}
+            >
+              Team
+            </button>
+          </div>
+          <section>
+            <div>
+              {documentToReactComponents(
+                content.aboutContent.philosophySection,
+                RICHTEXT_OPTIONS,
+              )}
+            </div>
+          </section>
+          <div className="container m-auto my-5 h-screen w-60 bg-lime-500 py-6">
+            {content.team.map((item) => {
+              return <p key={item.id}>{item.authorName}</p>;
+            })}
+          </div>
+          <div ref={teamSection}>
+            <TeamSection members={content.team}></TeamSection>
+            <ScrollToTopButton />
+          </div>
         </div>
-      </section>
-      <div className="container m-auto my-5 h-screen w-60 bg-lime-500 py-6">
-        {content.team.map((item) => {
-          return <p key={item.id}>{item.authorName}</p>;
-        })}
-      </div>
-      <div ref={teamSection}>
-        <TeamSection members={content.team}></TeamSection>
-        <ScrollToTopButton />
+        <div className="fixed right-44 top-40">
+          <ScrollSpy />
+        </div>
       </div>
     </>
   );
 }
 
 export default About;
+
+const ScrollToSection = (elementRef) => {
+  window.scrollTo({
+    top: elementRef.current.offsetTop,
+    behavior: "smooth",
+  });
+};

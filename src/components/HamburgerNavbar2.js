@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 function HamburgerNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -35,7 +36,7 @@ function HamburgerNavbar() {
           </div>
           <ul className="flex min-h-[250px] flex-col items-center justify-between">
             <li className="my-8 border-b border-gray-400 uppercase">
-              <a href="/about">About</a>
+              <Link href="/about">About</Link>
             </li>
             <li className="my-8 border-b border-gray-400 uppercase">
               <a href="/portfolio">Portfolio</a>
