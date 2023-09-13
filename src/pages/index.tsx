@@ -1,6 +1,6 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
 import ScrollToTopButton from "../components/BackToTopButton";
-import LoginButton from "@/components/LoginButton";
+import LoginButton from "@/components/LoginButton2n";
 
 import styles from "@/styles/Home.module.css";
 
@@ -25,7 +25,7 @@ export async function getStaticProps() {
 }
 
 export default function Home(props: any) {
-  console.log("het hele apparaat: " + JSON.stringify(props, null, 4));
+  console.log(process.env.NEXTAUTH_URL);
 
   return (
     <>
