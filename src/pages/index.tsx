@@ -1,6 +1,6 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
 import ScrollToTopButton from "../components/BackToTopButton";
-import LoginButton from "@/components/LoginButton2n";
+import LoginButton from "@/components/LoginButton2";
 
 import styles from "@/styles/Home.module.css";
 
