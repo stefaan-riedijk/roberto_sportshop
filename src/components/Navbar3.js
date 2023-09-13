@@ -5,8 +5,8 @@ import Image from "next/image";
 // import DropdownNormal from './DropdownNormal'
 import DropdownHover from "./DropdownHoverProps";
 import NavbarHamburger from "./HamburgerNavbar2";
-import Button from "./Button";
-
+import ProfileAvatar from "./ProfileAvatar";
+import LoginButton from "./LoginButton";
 import logoPic from "@/assets/images/R-ForceLogo.jpg";
 
 const servicesDropdownPaths = {
@@ -69,11 +69,8 @@ function Navbar() {
           </li>
         </ul>
         <div className="ml-auto inline-flex items-center space-x-10">
-          <Button
-            btnText={CTAButtonPaths.text}
-            btnSlug={CTAButtonPaths.slug}
-            className="inline-block"
-          />
+          <ProfileAvatar />
+          <LoginButton />
           <NavbarHamburger className="inline-block md:hidden" />
         </div>
       </div>

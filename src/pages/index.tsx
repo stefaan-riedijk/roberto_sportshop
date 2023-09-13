@@ -67,7 +67,6 @@ export default function Home(props: any) {
               alt="Nutrition Photo"
             />
           </Link>
-          <LoginButton />
         </div>
         <div className="h-full"></div>
       </div>
