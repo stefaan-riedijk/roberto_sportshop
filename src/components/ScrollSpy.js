@@ -2,7 +2,7 @@ import React from "react";
 
 function ScrollSpy() {
   return (
-    <div>
+    <div className="text-black">
       {/* <!-- Scrollspy --> */}
       <div id="scrollspy1" class="sticky-top pl-3 text-sm">
         <ul data-te-nav-list-ref>
@@ -13,7 +13,7 @@ function ScrollSpy() {
               class="text-neutral-600 dark:text-neutral-200 bg-transparent px-[5px] shadow-none"
               href="#example-1"
             >
-              Section 1
+              Team
             </a>
           </li>
           <li class="py-1">

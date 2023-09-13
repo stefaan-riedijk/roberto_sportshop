@@ -6,6 +6,7 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./public/**/*.html",
     "./node_modules/flowbite**/*.js",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     extend: {
@@ -14,5 +15,9 @@ module.exports = withMT({
       },
     },
   },
-  plugins: [require("flowbite/plugin"), require("flowbite-typography")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("flowbite-typography"),
+    require("tw-elements/dist/plugin.cjs"),
+  ],
 });

@@ -1,5 +1,6 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
 import ScrollToTopButton from "../components/BackToTopButton";
+import LoginButton from "@/components/LoginButton";
 
 import styles from "@/styles/Home.module.css";
 
@@ -66,6 +67,7 @@ export default function Home(props: any) {
               alt="Nutrition Photo"
             />
           </Link>
+          <LoginButton />
         </div>
         <div className="h-full"></div>
       </div>

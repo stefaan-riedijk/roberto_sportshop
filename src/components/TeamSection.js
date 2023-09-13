@@ -34,10 +34,10 @@ function TeamSection({ members }) {
                   </a>
                   <div className="p-5">
                     <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      <a href="#">Bonnie Green</a>
+                      <a href="#">{member.authorName}</a>
                     </h3>
                     <span className="text-gray-500 dark:text-gray-400">
-                      CEO & Web Developer
+                      {member.authorTitle}
                     </span>
                     <p className="mb-4 mt-3 font-light text-gray-500 dark:text-gray-400">
                       {member.authorBio}

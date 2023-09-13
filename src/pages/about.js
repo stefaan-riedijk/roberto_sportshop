@@ -38,38 +38,34 @@ function About(data) {
             </button>
             <button
               onClick={() => {
-                ScrollToSection(philosophy);
-              }}
-            >
-              Philosophy
-            </button>
-            <button
-              onClick={() => {
                 ScrollToSection(teamSection);
               }}
             >
               Team
             </button>
+            <button
+              onClick={() => {
+                ScrollToSection(philosophySection);
+              }}
+            >
+              Philosophy
+            </button>
           </div>
           <section>
-            <div>
+            <div className="py-14">
+              <h1 className="my-6 text-center text-4xl">Onze Missie</h1>
               {documentToReactComponents(
                 content.aboutContent.philosophySection,
                 RICHTEXT_OPTIONS,
               )}
             </div>
           </section>
-          <div className="container m-auto my-5 h-screen w-60 bg-lime-500 py-6">
-            {content.team.map((item) => {
-              return <p key={item.id}>{item.authorName}</p>;
-            })}
-          </div>
           <div ref={teamSection}>
             <TeamSection members={content.team}></TeamSection>
             <ScrollToTopButton />
           </div>
         </div>
-        <div className="fixed right-44 top-40">
+        <div className="fixed right-12 top-40 md:right-24 xl:right-52">
           <ScrollSpy />
         </div>
       </div>
