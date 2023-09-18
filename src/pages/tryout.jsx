@@ -1,4 +1,4 @@
-import Navbar2 from "@/components/Navbar2";
+import Navbar from "../components/Navbar/Navbar3";
 import React from "react";
 import CardGrid from "../components/CardGrid";
 import Cardcopy from "../components/Cardcopy";
@@ -24,7 +24,7 @@ export async function getStaticProps() {
 function tryOut({ programs }) {
   return (
     <>
-      <Navbar2 />
+      <Navbar />
       <div>
         {programs.map((program) => {
           <div key={program.id}>
