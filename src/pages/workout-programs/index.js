@@ -5,7 +5,7 @@ import { createClient } from "contentful";
 import { CategoryFilter } from "../../components/CategoryFilter";
 import { CardGrid } from "../../components/CardGrid";
 
-import Navbar from "../../components/Navbar3";
+import Navbar from "../../components/Navbar/Navbar3";
 import NewCard from "../../components/NewCard";
 
 export async function getStaticProps() {

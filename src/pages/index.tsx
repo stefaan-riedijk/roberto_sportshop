@@ -1,6 +1,5 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
 import ScrollToTopButton from "../components/BackToTopButton";
-import LoginButton from "@/components/LoginButton";
 
 import styles from "@/styles/Home.module.css";
 
@@ -8,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CarouselWithContent } from "@/components/Carousel.js";
-import Navbar from "../components/Navbar3.js";
+import Navbar from "../components/Navbar/Navbar3.js";
 import workoutphoto from "../assets/images/workout.jpg";
 import nutphoto from "../assets/images/nutrition.jpg";
 import { Inter } from "next/font/google";
