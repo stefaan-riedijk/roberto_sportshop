@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar2";
+import Navbar from "@/components/Navbar/Navbar3";
 import React from "react";
 import { InlineWidget } from "react-calendly";
 

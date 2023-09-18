@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { contentfulClient } from "../../lib/contentful/client";
 import { RICHTEXT_OPTIONS } from "../../lib/contentful/richtextOptions";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Navbar from "../../components/Navbar3";
-import BlogHeader from "../../components/BlogHeader";
+import Navbar from "../../components/Navbar/Navbar3";
+import BlogHeader from "./BlogHeader";
 import Image from "next/image";
 import BackToTopButton from "../../components/BackToTopButton";
 

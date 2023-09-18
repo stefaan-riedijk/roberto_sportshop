@@ -1,6 +1,6 @@
 import React from "react";
 import { contentfulClient } from "../../lib/contentful/client";
-import Navbar from "../../components/Navbar2";
+import Navbar from "../../components/Navbar/Navbar3";
 import Image from "next/image";
 import Link from "next/link";
 

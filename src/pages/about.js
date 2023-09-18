@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import getTeamMembers from "@/lib/contentful/getTeamMembers";
-import Navbar from "../components/Navbar3";
+import Navbar from "../components/Navbar/Navbar3";
 import TeamSection from "../components/TeamSection";
 import { getAboutPage } from "../lib/contentful/getAboutPage";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";

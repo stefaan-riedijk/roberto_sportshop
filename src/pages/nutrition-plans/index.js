@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar2";
+import Navbar from "../../components/Navbar/Navbar3";
 import NewCard from "../../components/NewCard";
 import { createClient } from "contentful";
 import { useRouter } from "next/router";
