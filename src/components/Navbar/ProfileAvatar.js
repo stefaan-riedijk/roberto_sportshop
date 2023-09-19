@@ -22,18 +22,19 @@ function ProfileAvatar() {
               className="rounded-full"
             />
           </button>
-          <div className="rounded-box absolute top-10  z-10 mr-auto h-fit w-fit">
-            {showMenu && (
-              <>
-                <div className=" mt-5 flex rounded-md bg-blue-300 ">
-                  <ul className="mx-2 text-left">
-                    <li>Corona</li>
-                    <li className=" min-w-fit">Sign Out</li>
-                  </ul>
-                </div>
-              </>
-            )}
-          </div>
+          {showMenu && (
+            <div className="rounded-box absolute top-10 z-10 flex h-fit w-20">
+              <div className=" mt-5 flex-auto rounded-md bg-blue-300 text-left">
+                <ul className="mx-2 w-[100%]">
+                  <li>Corona</li>
+                  <li className="">Extra Crazy</li>
+                  <li className="" onClick={signOut()}>
+                    Sign Out
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
