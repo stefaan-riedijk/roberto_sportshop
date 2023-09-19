@@ -8,7 +8,7 @@ function HamburgerNavbar() {
   return (
     <>
       <div className="md:hidden">
-        <button onClick={() => setIsNavOpen(!isNavOpen)}>
+        <button className="mr-4" onClick={() => setIsNavOpen(!isNavOpen)}>
           {isNavOpen ? (
             <XMarkIcon className="text-white-400 -mr-1 h-5 w-5" />
           ) : (
