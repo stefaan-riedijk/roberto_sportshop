@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 // import AvatarDropdown from "./AvatarDropdown";
 
 function ProfileAvatar() {
@@ -28,7 +28,9 @@ function ProfileAvatar() {
                 <div className=" mt-5 rounded-md bg-blue-300 text-center align-top ">
                   <ul className="mx-4">
                     <li>Corona</li>
-                    <li>Borreloi</li>
+                    <li className=" min-w-fit" onClick={signOut()}>
+                      Sign Out
+                    </li>
                   </ul>
                 </div>
               </>

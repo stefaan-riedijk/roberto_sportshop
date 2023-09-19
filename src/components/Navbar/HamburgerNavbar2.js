@@ -16,7 +16,7 @@ function HamburgerNavbar() {
           )}
         </button>
         <div
-          className={`fixed bottom-60 top-20 z-40 w-1/4 rounded-l-xl bg-blue-500 text-center transition-all duration-500 ease-in-out ${
+          className={` fixed bottom-36 top-20 z-40 w-2/5 rounded-l-xl bg-blue-500 text-center transition-all duration-500 ease-in-out ${
             isNavOpen ? " right-0" : " right-[-100%]"
           }`}
         >
