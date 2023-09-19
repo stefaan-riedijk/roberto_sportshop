@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import ListItemMobile from "./ListItemMobile";
 
 function HamburgerNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -20,10 +21,12 @@ function HamburgerNavbar() {
             isNavOpen ? " right-0" : " right-[-100%]"
           }`}
         >
-          <ul className="py-8 pr-7 text-right text-lg ">
+          <ul className="ml-5 py-8 pr-7 text-left text-lg ">
             <li>Iene</li>
             <li>Miene</li>
             <li>Mutten</li>
+            <ListItemMobile title="Nel" />
+            <li>Normaal</li>
           </ul>
         </div>
       </div>
