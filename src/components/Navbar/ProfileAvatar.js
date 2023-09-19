@@ -8,7 +8,7 @@ function ProfileAvatar() {
   if (session) {
     var userFirstname = session.user.name.split(" ");
     return (
-      <>
+      <div>
         <p className="hidden w-fit md:inline-block">{`Welcome Back, ${userFirstname[0]}!`}</p>
         <div className="relative h-full">
           <button
@@ -22,22 +22,20 @@ function ProfileAvatar() {
               className="rounded-full"
             />
           </button>
-          <div className="rounded-box absolute top-10  z-10 mr-auto">
+          <div className="rounded-box absolute top-10  z-10 mr-auto h-fit w-fit">
             {showMenu && (
               <>
-                <div className=" mt-5 rounded-md bg-blue-300 text-center align-top ">
-                  <ul className="mx-4">
+                <div className=" mt-5 flex rounded-md bg-blue-300 ">
+                  <ul className="mx-2 text-left">
                     <li>Corona</li>
-                    <li className=" min-w-fit" onClick={signOut()}>
-                      Sign Out
-                    </li>
+                    <li className=" min-w-fit">Sign Out</li>
                   </ul>
                 </div>
               </>
             )}
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
