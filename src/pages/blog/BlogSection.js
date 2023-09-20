@@ -70,7 +70,10 @@ function BlogSection({ posts }) {
             </article> */}
             {posts.map((post) => {
               return (
-                <article class="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                <article
+                  key={post.id}
+                  class="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800"
+                >
                   <div class="mb-5 flex items-center justify-between text-gray-500">
                     <span class="inline-flex items-center rounded bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800 dark:bg-primary-200 dark:text-primary-800">
                       <svg
