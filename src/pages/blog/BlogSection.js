@@ -68,10 +68,10 @@ function BlogSection({ posts }) {
                 </a>
               </div>
             </article> */}
-            {posts.map((post) => {
+            {posts.map((post, index) => {
               return (
                 <article
-                  key={post.id}
+                  key={index}
                   class="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800"
                 >
                   <div class="mb-5 flex items-center justify-between text-gray-500">
