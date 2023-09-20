@@ -9,7 +9,7 @@ function ProfileAvatar() {
     var userFirstname = session.user.name.split(" ");
     return (
       <div>
-        <p className="hidden w-fit md:inline-block">{`Welcome Back, ${userFirstname[0]}!`}</p>
+        <p className="hidden w-fit lg:inline-block">{`Welcome Back, ${userFirstname[0]}!`}</p>
         <div className="relative h-full">
           <button
             className="mx-0 object-fill"

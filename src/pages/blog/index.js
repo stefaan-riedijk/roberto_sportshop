@@ -1,16 +1,26 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar3";
 import BlogSection from "./BlogSection";
+import getBlogPosts from "../../lib/contentful/getBlogPosts";
 
-function Blog() {
+export async function getStaticProps() {
+  const data = await getBlogPosts();
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+export default function Blog(props) {
+  const posts = props.data.sanitizedRes;
+
   return (
     <>
       <Navbar />
       <div className="container mx-auto">
-        <BlogSection />
+        <BlogSection posts={posts} />
       </div>
     </>
   );
 }
-
-export default Blog;

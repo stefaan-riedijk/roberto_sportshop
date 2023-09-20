@@ -21,11 +21,13 @@ function HamburgerNavbar() {
             isNavOpen ? " right-0" : " right-[-100%]"
           }`}
         >
-          <ul className="ml-5 py-8 pr-7 text-left text-lg ">
-            <li>Iene</li>
+          <ul className="ml-5 py-8 pr-7 text-left text-lg font-medium">
+            <Link href="/blog">
+              <li>Blog</li>
+            </Link>
+            <ListItemMobile title="Nel" />
             <li>Miene</li>
             <li>Mutten</li>
-            <ListItemMobile title="Nel" />
             <li>Normaal</li>
           </ul>
         </div>
