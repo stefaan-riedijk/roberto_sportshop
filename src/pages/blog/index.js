@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar3";
-import BlogSection from "./BlogSection";
+import BlogSection from "../../components/Blog/BlogSection";
 import getBlogPosts from "../../lib/contentful/getBlogPosts";
 
 export async function getStaticProps() {

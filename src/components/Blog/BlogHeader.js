@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import dayjs from "dayjs";
 
 function BlogHeader(props) {
   return (
@@ -27,7 +28,9 @@ function BlogHeader(props) {
               {props.authorTitle}
             </p>
             <p className="text-base font-normal text-gray-900 dark:text-gray-400">
-              <time pubdate>{props.publishDate}</time>
+              <time pubdate>
+                {dayjs(props.publishDate).format("MMM D, YYYY h:mm A")}
+              </time>
             </p>
           </div>
         </div>

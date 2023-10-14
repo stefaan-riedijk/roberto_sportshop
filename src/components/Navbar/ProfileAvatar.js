@@ -8,8 +8,8 @@ function ProfileAvatar() {
   if (session) {
     var userFirstname = session.user.name.split(" ");
     return (
-      <div>
-        <p className="hidden w-fit lg:inline-block">{`Welcome Back, ${userFirstname[0]}!`}</p>
+      <div className="flex">
+        <p className="hidden xl:inline-flex">{`Welcome Back, ${userFirstname[0]}!`}</p>
         <div className="relative h-full">
           <button
             className="mx-0 object-fill"
@@ -19,7 +19,7 @@ function ProfileAvatar() {
               src={session.user.image}
               width={50}
               height={50}
-              className="rounded-full"
+              className=" min-w-full rounded-full"
             />
           </button>
           {showMenu && (

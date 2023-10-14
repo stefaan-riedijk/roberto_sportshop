@@ -10,13 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Comment {
   id         Int        @id @default(autoincrement())
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  title      String
-  published  Boolean    @default(false)
-  authorId   Int
+  body       String 
+  author     User     @relation(fields: [authorEmail], references: [email])
+  authorEmail String
+  postId      String  
 }
 
 model User {
@@ -27,6 +28,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  comments      Comment[]
 }
 
 
