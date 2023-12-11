@@ -20,7 +20,7 @@ function BackToTopButton() {
     });
   };
   return (
-    <div className="z-[80]">
+    <div className="z-50">
       {showScrollTopButton && (
         <button
           onClick={scrollTop}
