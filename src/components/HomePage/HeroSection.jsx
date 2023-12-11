@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-export default function HeroSection({ heroHeader, heroParagraph, heroImage }) {
+export default function HeroSection({ heroHeader, heroImage }) {
   return (
     <div className="border-b-6 my-30 h-fit">
       {/* <!-- SVG Background --> */}
@@ -73,7 +73,7 @@ export default function HeroSection({ heroHeader, heroParagraph, heroImage }) {
             </div>
             <div class="mx-auto mb-12 max-h-fit lg:mb-0">
               <Image
-                src={`https://${heroImage}`}
+                src={`https:${heroImage}`}
                 class=" rounded-lg opacity-70 shadow-lg dark:shadow-black/20"
                 alt=""
                 width={600}

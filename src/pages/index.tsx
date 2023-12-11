@@ -34,7 +34,6 @@ export default function Home({ pageContent }: any) {
       <HeroSection
         heroHeader={pageContent.heroHeader}
         heroImage={pageContent.heroImage.fields.file.url}
-        heroParagraph={"bruv"}
       />
       <Roadmap
         roadmapHeader={pageContent.roadmapHeader}
