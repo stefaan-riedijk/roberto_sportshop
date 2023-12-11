@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import dayjs from "dayjs";
+import { HiOutlineTrash } from "react-icons/hi";
 
-export default function CommentSection({ comments }) {
+function CommentSection(
+  {
+    comments,
+    submitChanger,
+    bodyChanger,
+    inputState,
+    setDeleteId,
+    setDeleteComm,
+    session,
+  },
+  ref,
+) {
+  const evalUser = (key) => {
+    if (comments[key].author.email == session.user.email) {
+      setDeleteId(comments[key].id);
+      setDeleteComm(true);
+      console.log(comments[key]);
+    }
+  };
+
   return (
     <>
-      <section class="bg-white py-8 antialiased dark:bg-gray-900 lg:py-16">
+      <section class="mb-6 bg-white py-4 antialiased dark:bg-gray-900 lg:py-8">
         <div class="mx-auto max-w-2xl px-4">
           <div class="mb-6 flex items-center justify-between">
             <h2 class="text-lg font-bold text-gray-900 dark:text-white lg:text-2xl">
@@ -22,18 +42,25 @@ export default function CommentSection({ comments }) {
                 class="w-full border-0 px-0 text-sm text-gray-900 focus:outline-none focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
                 placeholder="Write a comment..."
                 required
+                ref={ref}
               ></textarea>
             </div>
             <button
               type="submit"
               class="inline-flex items-center rounded-lg bg-primary-700 px-4 py-2.5 text-center text-xs font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900"
+              onClick={() => {
+                submitChanger(true);
+                setTimeout(() => {
+                  //ref.current.value = "";
+                }, 2000);
+              }}
             >
               Post comment
             </button>
           </form>
-          {comments?.map((comment) => {
+          {comments?.map((comment, key) => {
             return (
-              <div key={comment.id}>
+              <div key={key}>
                 <article class="rounded-lg bg-white p-6 text-base dark:bg-gray-900">
                   <footer class="mb-2 flex items-center justify-between">
                     <div class="flex items-center">
@@ -58,57 +85,16 @@ export default function CommentSection({ comments }) {
                       </p>
                     </div>
                     <button
-                      id="dropdownComment1Button"
+                      onClick={(event) => {
+                        evalUser(key);
+                      }}
+                      id={key}
                       data-dropdown-toggle="dropdownComment1"
                       class="inline-flex items-center rounded-lg bg-white p-2 text-center text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-50 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                       type="button"
                     >
-                      <svg
-                        class="h-4 w-4"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 16 3"
-                      >
-                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                      </svg>
-                      <span class="sr-only">Comment settings</span>
+                      <HiOutlineTrash className="h-6 w-6 " id={key} />
                     </button>
-                    {/* <!-- Dropdown menu --> */}
-                    <div
-                      id="dropdownComment1"
-                      class="z-10 hidden w-36 divide-y divide-gray-100 rounded bg-white shadow dark:divide-gray-600 dark:bg-gray-700"
-                    >
-                      <ul
-                        class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                        aria-labelledby="dropdownMenuIconHorizontalButton"
-                      >
-                        <li>
-                          <a
-                            href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            Edit
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            Remove
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            Report
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
                   </footer>
                   <p class="text-gray-500 dark:text-gray-400">{comment.body}</p>
                   <div class="mt-4 flex items-center space-x-4">
@@ -143,3 +129,5 @@ export default function CommentSection({ comments }) {
     </>
   );
 }
+
+export default React.forwardRef(CommentSection);

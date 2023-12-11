@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
 // import DropdownNormal from './DropdownNormal'
 import DropdownHover from "./DropdownHoverProps";
 import NavbarHamburger from "./HamburgerNavbar2";
@@ -41,7 +40,7 @@ const CTAButtonPaths = {
 
 function Navbar() {
   return (
-    <div className="sticky top-0 z-10 flex h-24 w-full items-center justify-normal bg-blue-500 text-white opacity-90">
+    <div className="sticky top-0 z-[20] flex h-24 w-full items-center justify-normal bg-blue-500 text-white">
       <h1 className="relative my-3 ml-4 mr-16 h-full max-w-lg px-10 text-2xl">
         <a href="\">
           <Image src={logoPic} alt="" fill={true} className="object-contain" />

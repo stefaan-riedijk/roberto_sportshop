@@ -1,5 +1,5 @@
 // hooks
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 
 // cdn imports + prisma imports
@@ -48,15 +48,28 @@ export async function getServerSideProps(context) {
 
 export default function Postpage(props) {
   // state variables, submit:boolean, commentbody: string (from input dom element), comments: object state variable
-  const [commentBody, setCommentBody] = useState("");
-  const [submit, setSubmit] = useState(false);
-  const [updateList, setUpdateList] = useState(false);
+  // JSON object with the comments for the post
   const [comments, setComments] = useState(props.comments);
+  // string var for the new comment from input box
+  const [commentBody, setCommentBody] = useState("");
+  // boolean to submit comment on click
+  const [submit, setSubmit] = useState(false);
+  // boolean to update the comment list
+  const [updateList, setUpdateList] = useState(false);
+  // boolean to delete comment on click
+  const [deleteComm, setDeleteComm] = useState(false);
+  // string var with the commentID to be deleted in the useEffect Call
+  const [deleteId, setDeleteId] = useState(0);
+
+  ////
+  const inputRef = useRef(null);
 
   // console logs
   //console.log(props);
-  //console.log(commentBody);
+  // console.log(comments);
+  //console.log(inputRef);
   //console.log(comments);
+  console.log(deleteId);
 
   // sanitize props data
   const post = props.post;
@@ -67,42 +80,50 @@ export default function Postpage(props) {
 
   // run use effect if comment is submitted or deleted
   useEffect(() => {
+    console.log("rabbit");
+
     // function to be called on clicking submit button
     const handleSubmit = async (text) => {
-      // const from input dom element
       const body = text;
-      // slug from content cdn
       const postId = props.post.postSlug;
-      // user email from session hook
       const authorEmail = session.user?.email;
-      // make post api request
       const response = await axios
         .post("/api/comments", {
           body,
           postId,
           authorEmail,
         })
-        .then(setUpdateList(true));
-      console.log(response.status);
-      console.log(response.data);
-      // get updated list of comments from prisma and update state variable
+        .then(() => {
+          setUpdateList(true);
+        });
     };
+
+    // update comment list function
     const updateListFunc = async () => {
       const slug = props.post.postSlug;
-      const response = await axios
-        .get("/api/comments", {
-          slug,
-        })
-        .then(setUpdateList(false));
+      const response = await axios.get("/api/comments", {
+        slug,
+      });
+      setUpdateList(false);
       setComments(response.data.comments);
       console.log(response.status);
       //console.log(response.data);
+    };
+    // delete comment
+    const handleDelete = async (deleteId) => {
+      const response = await axios
+        .delete(`/api/comments?id=${deleteId}`)
+        .then((response) => {
+          setUpdateList(true);
+          console.log(response);
+        })
+        .catch((err) => console.log(err));
     };
     // execute handleSubmit if submit is true
     if (submit) {
       if (session) {
         try {
-          handleSubmit(commentBody);
+          handleSubmit(inputRef.current.value);
         } catch (err) {
           console.log(err);
         }
@@ -120,7 +141,15 @@ export default function Postpage(props) {
       }
     }
     // only run useEffect if submit is changed
-  }, [submit, updateList]);
+    if (deleteComm) {
+      try {
+        handleDelete(deleteId);
+      } catch (err) {
+        console.log(err);
+      }
+      setDeleteComm(false);
+    }
+  }, [submit, updateList, deleteComm, deleteId]);
 
   return (
     <>
@@ -147,18 +176,16 @@ export default function Postpage(props) {
           <div className="">
             {documentToReactComponents(post.mainText, RICHTEXT_OPTIONS)}
           </div>
-          <input
-            onChange={(e) => {
-              setCommentBody(e.target.value);
-            }}
-          ></input>
-          <button
-            className=" h-10 w-10 rounded-lg bg-yellow-500"
-            onClick={() => {
-              setSubmit(true);
-            }}
-          ></button>
-          <CommentSection comments={comments} />
+          <CommentSection
+            comments={comments}
+            bodyChanger={setCommentBody}
+            submitChanger={setSubmit}
+            inputState={commentBody}
+            ref={inputRef}
+            session={session}
+            setDeleteId={setDeleteId}
+            setDeleteComm={setDeleteComm}
+          />
           <BackToTopButton />
         </div>
       </main>

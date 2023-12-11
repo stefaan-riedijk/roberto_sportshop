@@ -4,7 +4,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import DropdownHover from "./DropdownHover";
-import DropdownNormal from "./DropdownNormal";
+import DropdownNormal from "../DropdownNormal";
 
 import Link from "next/link";
 

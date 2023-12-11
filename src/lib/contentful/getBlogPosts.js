@@ -7,5 +7,5 @@ export default async function getBlogPosts() {
     const fields = item.fields;
     return fields;
   });
-  return { sanitizedRes };
+  return sanitizedRes;
 }

@@ -7,6 +7,7 @@ export async function getAboutPage() {
   const aboutRes = await contentfulClient.getEntries({
     content_type: "aboutPage",
   });
+
   const Team = teamRes.items.map((item) => {
     const photo = item.fields.authorPhoto.fields;
     return {

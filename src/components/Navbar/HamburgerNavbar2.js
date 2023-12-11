@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import ListItemMobile from "./ListItemMobile";
+import NavItemMobile from "./NavItemMobile";
 
 function HamburgerNavbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -25,7 +25,7 @@ function HamburgerNavbar() {
             <Link href="/blog">
               <li>Blog</li>
             </Link>
-            <ListItemMobile title="Nel" />
+            <NavItemMobile title="Nel" />
             <li>Miene</li>
             <li>Mutten</li>
             <li>Normaal</li>

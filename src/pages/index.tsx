@@ -1,38 +1,48 @@
 import { contentfulClient } from "@/lib/contentful/client.js";
 import ScrollToTopButton from "../components/BackToTopButton";
+import HeroSection from "@/components/HomePage/HeroSection";
+import LatestNewsSection from "@/components/HomePage/LatestNewsSection";
+import ContentBlock from "@/components/HomePage/ContentBlock";
+import Roadmap from "@/components/HomePage/Roadmap";
+import FeatureSection from "@/components/HomePage/FeatureSection";
 
 import styles from "@/styles/Home.module.css";
 
 import Image from "next/image";
 import Link from "next/link";
 
-import { CarouselWithContent } from "@/components/Carousel.js";
 import Navbar from "../components/Navbar/Navbar3.js";
 import workoutphoto from "../assets/images/workout.jpg";
 import nutphoto from "../assets/images/nutrition.jpg";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Inter, Anek_Telugu } from "next/font/google";
 
 export async function getStaticProps() {
   const res = await contentfulClient.getEntries({ content_type: "homePage" });
-  return {
-    props: {
-      homepage: res.items[0].fields,
-    },
-  };
+  const sanRes = res.items[0].fields;
+  return { props: { pageContent: sanRes } };
 }
 
-export default function Home(props: any) {
-  console.log(process.env.NEXTAUTH_URL);
-
+export default function Home({ pageContent }: any) {
+  console.log(pageContent);
   return (
     <>
       <Navbar />
       <ScrollToTopButton />
-      <div className="container relative mx-auto h-full w-full px-4 py-10">
+      {/* <div className="container relative mx-auto h-full w-full px-4 py-10">
         <CarouselWithContent></CarouselWithContent>
-      </div>
+      </div> */}
+      <HeroSection
+        heroHeader={pageContent.heroHeader}
+        heroImage={pageContent.heroImage.fields.file.url}
+        heroParagraph={"bruv"}
+      />
+      <Roadmap
+        roadmapHeader={pageContent.roadmapHeader}
+        roadmapSteps={pageContent.roadmapStep}
+      />
+      <FeatureSection features={pageContent.feature} />
+      <LatestNewsSection />
+      <ContentBlock />
       <div className="container relative mx-auto max-w-5xl px-5 py-10 text-center text-blue-700">
         <div className="my-4 h-full"></div>
         <div className="container relative mx-auto max-w-xl space-x-3 rounded-lg bg-blue-400">

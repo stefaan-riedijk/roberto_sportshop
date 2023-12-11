@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 
-function ListItemMobile(props) {
+function NavItemMobile(props) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <li className="">
@@ -27,4 +27,4 @@ function ListItemMobile(props) {
   );
 }
 
-export default ListItemMobile;
+export default NavItemMobile;
