@@ -14,7 +14,7 @@ export default function FeatureSection({ features }) {
           />
           <div class="flex flex-1 flex-col justify-center p-6 dark:bg-gray-900">
             <span class="text-xs uppercase dark:text-gray-400">
-              Placeholder Header
+              Kom een gratis proefles volgen!
             </span>
             <h3 class="text-3xl font-bold">
               {features[0].fields.featureTitle}
@@ -37,7 +37,7 @@ export default function FeatureSection({ features }) {
           />
           <div class="flex flex-1 flex-col justify-center p-6 dark:bg-gray-900">
             <span class="text-xs uppercase dark:text-gray-400">
-              Join, it's free
+              Kom een gratis proefles volgen!
             </span>
             <h3 class="text-3xl font-bold">
               {features[1].fields.featureTitle}
@@ -60,7 +60,7 @@ export default function FeatureSection({ features }) {
           />
           <div class="flex flex-1 flex-col justify-center p-6 dark:bg-gray-900">
             <span class="text-xs uppercase dark:text-gray-400">
-              Join, it's free
+              Kom een gratis proefles volgen!
             </span>
             <h3 class="text-3xl font-bold">
               {features[2].fields.featureTitle}
